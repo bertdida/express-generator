@@ -1,6 +1,8 @@
 #!/usr/bin/env zx
 
-const app = argv._[0];
+let app = argv._[0];
+app = app === "." ? path.basename(process.cwd()) : app;
+
 if (!app) {
   console.log(chalk.red("App name is required"));
   process.exit(1);
