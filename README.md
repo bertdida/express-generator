@@ -7,17 +7,19 @@ An all-in-one script for effortlessly creating an Express app with TypeScript, E
 1. Download the express-generator.mjs script:
 
 ```bash
-sudo wget https://raw.githubusercontent.com/bertdida/express-generator/main/express-generator.mjs -P /usr/bin
+wget -O $HOME/.local/bin/express-generator https://raw.githubusercontent.com/bertdida/express-generator/main/express-generator.mjs
 ```
 
 2. Make the script executable:
 
 ```bash
-sudo chmod +x /usr/bin/express-generator.mjs
+chmod +x $HOME/.local/bin/express-generator
 ```
 
-3. To generate a new Express.js application, navigate to the directory where you want to create the app and run the following command:
+3. Add `$HOME/.local/bin` to your path.
+
+4. To generate a new Express.js application, navigate to the directory where you want to create the app and run the following command:
 
 ```bash
-express-generator.mjs app
+express-generator app
 ```
