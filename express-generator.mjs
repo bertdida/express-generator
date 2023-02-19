@@ -200,6 +200,8 @@ function generateNodemonSettings() {
 async function setupHusky() {
   console.log(chalk.blue("Setting up husky..."));
 
+  await $`cd ${app} && git init`;
+
   await $`mkdir -p ${app}/.husky`;
   await $`cd ${app} && npx --yes husky-init &> /dev/null`;
   await $`cd ${app} && npm install &> /dev/null`;
@@ -313,7 +315,10 @@ async function runFormatter() {
 async function runInitialCommit() {
   console.log(chalk.blue("Running initial commit..."));
 
-  await $`cd ${app} && git init`;
+  if (fs.existsSync(`${app}/.git`)) {
+    await $`cd ${app} && git init`;
+  }
+
   await $`cd ${app} && npm i &> /dev/null`; // required for husky to work
   await $`cd ${app} && git add .`;
   return $`cd ${app} && git commit -m "chore: initial commit"`;
