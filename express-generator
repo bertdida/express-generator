@@ -316,6 +316,7 @@ async function runInitialCommit() {
     await $`cd ${app} && git init`;
   }
 
+  await $`cd ${app} && echo 'dist' >> .gitignore`;
   await $`cd ${app} && npm i &> /dev/null`; // required for husky to work
   await $`cd ${app} && git add .`;
   return $`cd ${app} && git commit -m "chore: initial commit"`;
