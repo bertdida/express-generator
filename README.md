@@ -7,7 +7,7 @@ An all-in-one script for effortlessly creating an Express app with TypeScript, E
 1. Download the express-generator script:
 
 ```bash
-wget -P $HOME/.local/bin https://raw.githubusercontent.com/bertdida/express-generator/main/express-generator
+wget -O $HOME/.local/bin/express-generator https://raw.githubusercontent.com/bertdida/express-generator/main/express-generator
 ```
 
 2. Make the script executable:
