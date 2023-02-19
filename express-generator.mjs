@@ -8,7 +8,6 @@ if (!app) {
   process.exit(1);
 }
 
-let formatterIsSetup = false;
 const funcs = [
   runExpressGenerator,
   setupSourceFolder,
@@ -301,17 +300,13 @@ async function setupFormatter() {
     JSON.stringify(prettierSettings, null, 2),
     "utf8"
   );
-
-  formatterIsSetup = true;
 }
 
 async function runFormatter() {
-  if (formatterIsSetup) {
-    console.log(chalk.blue("Running formatter..."));
+  console.log(chalk.blue("Running formatter..."));
 
-    await $`cd ${app} && npx --yes eslint --config .eslintrc.json 'src/**/*.ts' --fix &> /dev/null`;
-    return $`cd ${app} && npx --yes prettier --config .prettierrc.json . --write &> /dev/null`;
-  }
+  await $`cd ${app} && npx --yes eslint --config .eslintrc.json 'src/**/*.ts' --fix &> /dev/null`;
+  return $`cd ${app} && npx --yes prettier --config .prettierrc.json . --write &> /dev/null`;
 }
 
 async function runInitialCommit() {
